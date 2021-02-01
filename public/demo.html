@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    </head>
+    <style>
+        ul {
+            list-style: none;
+        }
+        .radio-content .radio-label {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #444;
+        }
+    </style>
+    <body>
+        <ul id="classIdsCtl" class="radio-content"></ul>
+        <script>
+            var data = [
+                {
+                    id: null,
+                    name: null,
+                    sort: null,
+                    parentId: null,
+                    startDate: null,
+                    endDate: null,
+                    packId: null,
+                    childen: [
+                        {
+                            id: 499,
+                            name: "零基础班143",
+                            sort: null,
+                            parentId: null,
+                            startDate: null,
+                            endDate: null,
+                            packId: 86,
+                            childen: null,
+                            users: null,
+                            groups: null,
+                            packName: "心理咨询师国际规范化培训",
+                            endDateExt: null,
+                            startDateExt: null,
+                            createTimeExt: null,
+                        },
+                        {
+                            id: 49,
+                            name: "202010零基础班",
+                            sort: null,
+                            parentId: null,
+                            startDate: null,
+                            endDate: null,
+                            packId: 86,
+                            childen: null,
+                            users: null,
+                            groups: null,
+                            packName: "心理咨询师国际规范化培训",
+                            endDateExt: null,
+                            startDateExt: null,
+                            createTimeExt: null,
+                        },
+                    ],
+                    users: null,
+                    groups: null,
+                    packName: "心理咨询师国际规范化培训",
+                    endDateExt: null,
+                    startDateExt: null,
+                    createTimeExt: null,
+                },
+                {
+                    id: null,
+                    name: null,
+                    sort: null,
+                    parentId: null,
+                    startDate: null,
+                    endDate: null,
+                    packId: null,
+                    childen: [
+                        {
+                            id: 498,
+                            name: "零基础班142",
+                            sort: null,
+                            parentId: null,
+                            startDate: null,
+                            endDate: null,
+                            packId: 60,
+                            childen: null,
+                            users: null,
+                            groups: null,
+                            packName: "绘画疗法",
+                            endDateExt: null,
+                            startDateExt: null,
+                            createTimeExt: null,
+                        },
+                    ],
+                    users: null,
+                    groups: null,
+                    packName: "绘画疗法",
+                    endDateExt: null,
+                    startDateExt: null,
+                    createTimeExt: null,
+                },
+            ];
+
+            createHtml(data);
+
+            function createHtml(data) {
+                data.forEach(function(item, index) {
+                    if (item.childen && item.childen.length) {
+                        var liDom = document.createElement("li");
+                        var h4 = document.createElement("h4");
+                        h4.innerHTML = item.packName;
+
+                        var classList = item.childen;
+                        var str = "";
+                        classList.forEach(function(child, idx) {
+                            str +=
+                                '<label class="radio-label">' +
+                                '<input type="radio" name=' +
+                                item.packId +
+                                " />" +
+                                child.name +
+                                "</label>";
+                        });
+                        liDom.append(h4);
+                        $(liDom).append(str);
+                        $("#classIdsCtl").append(liDom);
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>
