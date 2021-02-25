@@ -4,15 +4,15 @@ export interface DescribeProps {
   text?: string;
 }
 export enum ChartTypes {
-  "BAR" = "bar", //条形图
-  "LINE" = "line", //折线图
-  "COLUMN" = "column", // 柱状图
-  "PIE" = "pie", // 饼图
-  "SCATTER" = "scatter", // 散点图，象限图
-  "RADAR" = "radar" // 雷达图
+  SCATTER = 1, // 散点图，象限图
+  BAR = 2, //条形图
+  LINE = 3, //折线图
+  COLUMN = 4, // 柱状图
+  PIE = 5, // 饼图
+  RADAR = 6 // 雷达图
 }
 export type ConfigProps = {
-  type: ChartTypes;
+  type: number;
   title?: DescribeProps;
   description?: DescribeProps;
 
@@ -36,6 +36,12 @@ export type PieProps = {
   angleField?: string;
   colorField?: string;
   radius?: string;
+};
+
+export type ScatterProps = {
+  size?: number;
+  shape?: string;
+  quadrant?: any;
 };
 export type ChartProps = PieProps & ConfigProps;
 
@@ -75,4 +81,20 @@ export const defaultHistogramConfig = {
     grid: null // 不显示网格
   },
   yAxis: {}
+};
+
+export interface TestResult {
+  avatarUrl: string;
+  nickName: string;
+  testId: number;
+  resultId: number;
+  startTime: string;
+  modules: ResultModule[];
+}
+export type ResultModule = {
+  id: number;
+  moduleName: string;
+  moduleDesc: string;
+  imgType: number;
+  moduleType: number;
 };

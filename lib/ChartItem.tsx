@@ -30,7 +30,7 @@ export default defineComponent({
       required: true
     },
     type: {
-      type: String
+      required: true
     }
   },
 
@@ -38,7 +38,12 @@ export default defineComponent({
     return () => {
       let Component: any;
       const { type, config } = props;
+      console.log("type99999999999999：", type, ChartTypes.SCATTER);
       switch (type) {
+        case ChartTypes.SCATTER:
+          console.log("散点图");
+          Component = Scatter;
+          break;
         case ChartTypes.BAR:
           console.log("渲染条形图");
           Component = Bar;
@@ -60,10 +65,6 @@ export default defineComponent({
             config.angleField = "y";
           }
           Component = Pie;
-          break;
-        case ChartTypes.SCATTER:
-          console.log("散点图");
-          Component = Scatter;
           break;
         case ChartTypes.RADAR:
           console.log("雷达图----");
