@@ -23,9 +23,13 @@ export default defineComponent({
 
   setup(props) {
     const result = ref({
-      resultId: 677,
-      score2: 3,
-      max: 2,
+      resultId: 674,
+      score2: 1,
+      avatarUrl:
+        "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ9uR9TUDqdwVVBVbBB517glHxPZlFIHRMkyjAPg5POmJUNJdvYvYic4Tu9r5zszrI0fCmG67WXITg/132",
+      max: 7,
+      extendData:
+        '[{"label":"S","max":0,"min":0,"score":1,"value":1},{"label":"D","max":0,"min":0,"score":2,"value":16},{"label":"C","max":0,"min":0,"score":3,"value":13},{"label":"I","max":0,"min":0,"score":4,"value":0}]',
       nickName: "。",
       userName: "张小艳",
       modules: [
@@ -34,7 +38,8 @@ export default defineComponent({
           moduleName: "配象限图例",
           moduleDesc: "配象限图例",
           moduleType: 0,
-          imgType: 1,
+          imgType: 2,
+          contentData: { minY: 1, minX: 1, maxY: 7, maxX: 7 },
           charts: [
             {
               id: 1,
@@ -75,34 +80,35 @@ export default defineComponent({
           ]
         },
         {
-          id: 13,
-          moduleName: "恐惧型",
-          moduleDesc: "在人际关系中焦虑感和回避感都较高",
+          id: 10,
+          moduleName: "",
+          moduleDesc:
+            '<p><img src="http://static1.siyuanren.com/jpg/83f39a162cad494a9b5f1e53bb72f114.jpg" alt="" width="640" height="1000" /></p>',
           moduleType: 0,
           imgType: 0
         },
         {
-          id: 17,
-          moduleName: "恐惧型",
+          id: 14,
+          moduleName: "安全型",
           moduleDesc:
-            "内心渴望他人的接纳，但又非常不接受自己的不完美，通常会表现出徘徊和拒绝。同时与伴侣的相处中有时可能会感到困惑，会觉得自己的伴侣非常敏感，一件小事情就会被触发非常强烈的反应。也有可能又会觉得对方非常的冷漠，遇到问题就只会包裹自己而不知道该怎样去解决。\r\n自我评价较为消极，怕被拒绝，或担心自己离不开对方，因而避免和他人建立亲密关系。但进入亲密关系之后，又担心被抛弃，时常感到焦虑。对方不在身边时不安，在身边又有点厌烦。所以虽然你的最深层情绪时担心被抛弃，但是表现出来的态度却可能让伴侣感到你占有欲强，在亲密关系中，掌控的程度与能够获得的安全感、自我价值感成正比，同时追求平静与轻松。\r\n与他人有冲突时，更喜欢以间接方式表达不满，如疏远冷淡。在一段关系中，较为容易成为“逃兵”，想要先放手，以此缓解内心的焦虑和被控制的感觉。对亲密关系既渴望又恐惧的心态，让自己表现得若即若离，总在亲密与疏远之间挣扎徘徊。",
+            "能够平静坦然的处理与他人的关系，并且可以建立起相对独立却又亲密的关系。不会担心被抛弃。对自己和身边的人大部分时候都会做出正面的评价，有自己的价值感，认为自己值得爱与被爱，他人也值得去爱和信任。",
           moduleType: 1,
           imgType: 0
         },
         {
-          id: 29,
-          moduleName: "恐惧型",
+          id: 26,
+          moduleName: "安全型",
           moduleDesc:
-            "试着接纳、爱护自己，正视自己的内心，用心去体会、理解自己内心的想法，尝试着去想为什么会有这样的想法，然后找到你所能理解的角度去接纳它，这是建立自信心的一个好的开始，同时遇到问题时要做到有效的沟通，其中沟通重点可以放在客观的陈述自己内心的想法与感受，减少意气化得相互指责，尝试着多从“我们”的角度去阐述问题，而不仅仅是“我”，同时在生活中可以尝试降低对于每件事物的预期，相信这样的你会获得更好的成长与改变。",
+            "对于安全型的人来说相对最容易对亲密关系感到满意，恋爱关系也往往能够持续更长的时间，彼此信任，彼此承诺，互相依赖，并且在压力大的时候更倾向于向同伴求助，也更愿意在对方有压力时提供支持。你总能成为身边人的支柱和依靠，你只需要注意明确什么是自己的想法，什么是集体/他人的想法，做到这一点后，找到自己的方向努力向前就好。",
           moduleType: 1,
           imgType: 0
         }
       ],
-      score: 2,
-      min: 0,
-      startTime: "2021-02-24 14:32:22",
+      score: 3,
+      min: 3,
+      startTime: "2021-02-26 16:42:21",
       testId: 98,
-      endTime: "2021-02-24 14:32:43",
+      endTime: "2021-02-26 16:51:20",
       testName: "你的依恋类型是什么"
     });
     const config: Ref<ChartProps> = ref({
