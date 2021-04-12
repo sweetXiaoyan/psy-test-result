@@ -1,5 +1,5 @@
 // 生产环境
-const isProd = process.env.NODE_ENV === "production";
+let isProd = process.env.NODE_ENV === "production";
 module.exports = {
   productionSourceMap: false,
   configureWebpack: config => {
