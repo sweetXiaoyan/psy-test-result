@@ -4,7 +4,6 @@ module.exports = {
   productionSourceMap: false,
   configureWebpack: config => {
     if (isProd) {
-      console.log("----");
       // 为生产环境修改配置...
       config.externals = {
         "@antv/g2plot": {
