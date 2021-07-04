@@ -26,6 +26,7 @@ export type ConfigProps = {
   angleField?: string;
   color?: Array<string> | string;
   radius?: string;
+  isGroup?: string; //是否分组
 };
 
 export interface TestProp {
@@ -67,6 +68,9 @@ export const SingleChartPropsDefine = {
 // 柱状图 默认配置
 export const defaultHistogramConfig = {
   maxBarWidth: 20,
+  shapeStyle: {
+    borderRadius: 14
+  },
   label: {
     offsetX: 0,
     style: {
@@ -92,9 +96,9 @@ export interface TestResult {
   modules: ResultModule[];
 }
 export type ResultModule = {
-  id: number;
-  moduleName: string;
-  moduleDesc: string;
+  id?: number;
+  moduleName?: string;
+  moduleDesc?: string;
   imgType: number;
-  moduleType: number;
+  moduleType?: number;
 };

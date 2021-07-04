@@ -1,7 +1,7 @@
 import { ChartTypes, ChartProps } from "./types";
 
 export function useStructure(config, result) {
-  const chartConfig = {} as ChartProps;
+  let chartConfig = {} as ChartProps;
   let chartData: Record<string, any>[] = [];
   chartConfig.type = config.imgType;
   const resultData = JSON.parse(result.extendData);
@@ -15,6 +15,7 @@ export function useStructure(config, result) {
       visible: false
     };
   }
+
   switch (config.imgType) {
     case ChartTypes.SCATTER:
       chartData = [{ x: resultData.score2, y: resultData.score }];
@@ -33,6 +34,16 @@ export function useStructure(config, result) {
       if (!config.angleField) {
         chartConfig.angleField = "value";
       }
+      break;
+    case ChartTypes.COLUMN:
+      chartData = resultData;
+      chartConfig = {
+        ...chartConfig,
+        xField: "label",
+        yField: "value",
+        seriesField: "type",
+        isGroup: "true"
+      };
       break;
     default:
       break;

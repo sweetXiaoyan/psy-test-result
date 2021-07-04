@@ -10,4 +10,7 @@ npm install @antv/g2plot
 
 
 
+
+
 ## 图表配置
+参考：https://github.com/hz199/h-charts/blob/master/src/packages/pie/index.ts

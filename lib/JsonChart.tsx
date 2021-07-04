@@ -3,10 +3,13 @@ import { ChartTypes, ResultModule } from "./types";
 import "./common.less";
 import { useStructure } from "./useStructure";
 // import Bar from "./charts/Bar";
-// import Column from "./charts/Column";
+import Column from "./charts/Column";
 // import Line from "./charts/Line";
 // import Radar from "./charts/Radar";
 import Pie from "./charts/Pie";
+import Scatter from "./charts/Scatter";
+import Bar from "./charts/Bar";
+import Radar from "./charts/Radar";
 import Describe from "./Describe";
 
 interface ChartWrapperProps {
@@ -24,8 +27,8 @@ export default defineComponent({
       required: true
     },
     value: {
-      type: Array, //as PropType<Record<string, any>[]>
-      required: true
+      type: Array //as PropType<Record<string, any>[]>
+      // required: true,
     }
   },
 
@@ -44,15 +47,22 @@ export default defineComponent({
       switch (chartConfig.type) {
         case ChartTypes.SCATTER:
           console.log("散点图");
-          Component = defineAsyncComponent(() => import("./charts/Scatter"));
+          //   Component = defineAsyncComponent(() => import("./charts/Scatter"));
+          Component = Scatter;
           break;
         case ChartTypes.BAR:
           console.log("渲染条形图");
-          Component = defineAsyncComponent(() => import("./charts/Bar"));
+          Component = Bar;
+          //  defineAsyncComponent(() =>
+          //     import("./charts/Bar")
+          // );
           break;
         case ChartTypes.COLUMN:
           console.log("渲染柱状图");
-          Component = defineAsyncComponent(() => import("./charts/Column"));
+          // Component = defineAsyncComponent(() =>
+          //     import("./charts/Column")
+          // );
+          Component = Column;
           break;
         case ChartTypes.LINE:
           console.log("渲染折线图");
@@ -68,7 +78,8 @@ export default defineComponent({
           break;
         case ChartTypes.RADAR:
           console.log("雷达图----");
-          Component = defineAsyncComponent(() => import("./charts/Radar"));
+          Component = Radar;
+          // defineAsyncComponent(() =>import("./charts/Radar"));
           break;
         default:
           break;
@@ -91,6 +102,8 @@ export default defineComponent({
     const modulesWrapper = () => {
       let { modules } = props.result;
       let { type } = props;
+      // 兼容 仅传单个图，非全部测试结果
+      modules = modules ? modules : [props.result];
       if (type == 1 || type == 0) {
         // 详细结果|简单结果
         modules = modules.filter((item: any) => item.moduleType == type);
