@@ -57,12 +57,13 @@ const radarIndicator = (
 ) => {
     let sourceKeys: string[] = [];
     let indicatorArr: ObjectKey[] = [];
-    indicatorArr = dataSource.map((item) => {
+    dataSource.forEach((item) => {
         if (sourceKeys.includes(item.label)) {
             return;
         }
-        return { name: item.label };
-    }) as ObjectKey[];
+        sourceKeys.push(item.label);
+        indicatorArr.push({ text: item.label });
+    });
     return indicatorArr;
 };
 const radarSeries = (
@@ -75,6 +76,7 @@ const radarSeries = (
         next.series ? cur.push(next.series) : null;
         return Array.from(new Set(cur));
     }, []);
+    const seriesData: ObjectKey[] = [];
 
     if (seriesNum.length > 1) {
         // 多个
@@ -83,13 +85,35 @@ const radarSeries = (
                 name: item,
                 symbol: "none",
                 areaStyle: {
-                    color: color[index],
+                    color:  color[index],
+                },
+                lineStyle: {
+                    // 单项线条样式
+                    width: 0,
+                },
+                label: {
+                    color: "#666666",
                 },
                 type: "radar",
             };
-            sourceMap.data = dataSource.map((el) => el.value);
-            series.push(sourceMap);
+            // sourceMap.data = dataSource.filter((el) => item === el.series);
+            sourceMap.value = dataSource.reduce(
+                (cur: number[], next): number[] => {
+                    next.series == item ? cur.push(next.value) : null;
+                    return cur;
+                },
+                []
+            );
+            seriesData.push(sourceMap);
         });
+        series[0] = {
+            type: "radar",
+            // symbol: "none",
+            //     areaStyle: {
+            //         color: color[0],
+            //     },
+            data: seriesData,
+        };
     } else {
         series[0] = {
             type: "radar",
@@ -107,7 +131,7 @@ const radarSeries = (
             data: [dataSource.map((item: RadarDataSource) => item.value)],
         };
     }
-
+    console.log("----series", series);
     return series;
 };
 
@@ -151,6 +175,7 @@ const handleRadar = (
         },
         series: series,
     };
+    console.log("options---", options);
     return options;
 };
 export default handleRadar;

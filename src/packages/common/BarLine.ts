@@ -187,7 +187,6 @@ const barDefaultLabel = {
         fontSize:10,
         color:"#333",
         formatter: (params) => {
-            console.log("params",params)
             return params.data.percent ? params.data.percent : params.value;
         },
     },

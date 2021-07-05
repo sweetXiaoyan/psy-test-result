@@ -12,6 +12,10 @@
     "sourceMap": true,
     "baseUrl": ".",
     "noImplicitAny":false,
+    // "files":[
+    //     "src/packages/**",
+    //     "src/utils/**"
+    // ],
     "types": [
       "webpack-env",
       "jest"
@@ -21,21 +25,24 @@
         "src/*"
       ]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
+    // "lib": [
+    //   "esnext",
+    //   "dom",
+    //   "dom.iterable",
+    //   "scripthost"
+    // ]
   },
   "include": [
     "src/**/*.ts",
     // "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
+    "src/**/*.d.ts",
+    "node_modules/vue-tsx-support/enable-check.d.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "build"
   ]
 }

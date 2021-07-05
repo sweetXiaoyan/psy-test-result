@@ -87,7 +87,8 @@ export default defineComponent({
     ];
 
     return {
-      singleData
+      singleData,
+      data
     };
   }
 });
