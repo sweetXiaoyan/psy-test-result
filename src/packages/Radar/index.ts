@@ -32,7 +32,6 @@ const JsonRadar = defineComponent({
     const options: Ref<EChartsOption> = ref(
       handlerRadar(dataSource.value, settings.value)
     );
-    console.log("---", options);
     watch([dataSource, settings], () => {
       options.value = handlerRadar(dataSource.value, settings.value);
     });

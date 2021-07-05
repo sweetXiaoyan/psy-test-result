@@ -5,8 +5,7 @@
  */
 export function throttle(fn: Function, delay = 500) {
   let timer;
-  let context = function() {
-    let args = arguments;
+  let context = function(...args) {
 
     if (timer) return;
     timer = setTimeout(() => {
@@ -27,8 +26,7 @@ export function throttle(fn: Function, delay = 500) {
  */
 export function debounce(fn: Function, delay = 500) {
   let timer: number | null = null;
-  const context = function() {
-    const args = arguments;
+  const context = function(...args) {
     clearTimeout(timer!);
     timer = setTimeout(function() {
       fn.apply(context, args);

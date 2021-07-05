@@ -29,3 +29,5 @@ export const defaultTooltip = (trigger = "axis") => {
     padding: [10, 10]
   };
 };
+
+export const defaultColors = ["#066EFF","#FF5D23", "#FDA720", "#2BC388", "#FC674F"]
