@@ -9,7 +9,7 @@
         "test:unit": "vue-cli-service test:unit",
         "lint": "vue-cli-service lint",
         "ts:js": "tsc --outDir libs",
-        "libs": "vue-cli-service build --report --target lib --name index src/packages/main.ts",
+        "libs": "vue-cli-service build --target lib --name index src/packages/main.ts",
         "prepublishOnly": "npm run libs"
     },
     "publishConfig": {
