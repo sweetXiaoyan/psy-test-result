@@ -3,6 +3,7 @@ import JsonPie from "../Pie";
 import JsonLine from "../Line";
 import JsonRadar from "../Radar";
 import { ObjectKey, ChartTypes } from "../../utils/type";
+import { computedPercent } from "../../utils/utils";
 import { defineComponent, PropType, h, App } from "vue";
 import { PieDataSource, PieSettings } from "../pie/pie";
 import { BarLineDataSource, BarLineSettings } from "../common/BarLine";
@@ -17,6 +18,11 @@ const JCharts = defineComponent({
     type: {
       type: Number || String
     },
+    percent: {
+      // 以百分比显示
+      type: Boolean,
+      default: false
+    },
     settings: {
       type: Object,
       default: () => ({})
@@ -27,7 +33,7 @@ const JCharts = defineComponent({
     }
   },
   render() {
-    const { type, dataSource, settings, ...rest } = this.$props;
+    let { type, dataSource, settings, ...rest } = this.$props;
     if (!type) {
       console.warn("使用JCharts 必须传入type");
       return;
@@ -36,6 +42,7 @@ const JCharts = defineComponent({
       console.warn("参数type不正确");
       return;
     }
+
     switch (Number(type)) {
       case ChartTypes.PIE:
         return h(JsonPie, {

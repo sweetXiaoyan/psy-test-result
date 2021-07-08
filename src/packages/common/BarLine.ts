@@ -33,12 +33,6 @@ type BarLineBase = {
   series?: string; //柱子|折线 个数
 };
 export type BarLineDataSource = Columns & BarLineBase;
-// const data: BarLineDataSource[] = [
-//     {
-//         label: "1",
-//         value: 1,
-//     },
-// ];
 
 // 坐标轴类型
 export declare const AXIS_TYPES: {
@@ -187,7 +181,7 @@ const barDefaultLabel = {
     fontSize: 10,
     color: "#333",
     formatter: params => {
-      return params.data.percent ? params.data.percent : params.value;
+      return params.data.percent ? params.data.percent + "%" : params.value;
     }
   },
   emphasis: {
@@ -332,9 +326,6 @@ const normalSeries = (
         ? barSeries(color[0])
         : {})
     };
-    if (!isPositiveNumber) {
-      console.log(dataSource, "----dataSourceMap", seriesItem);
-    }
     return seriesItem;
   }
   return series;

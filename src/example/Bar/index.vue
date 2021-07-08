@@ -22,7 +22,7 @@
     </div>
     <div>
       <h3>使用Ycharts实现</h3>
-      <j-charts type="5" :dataSource="data1"></j-charts>
+      <j-charts :percent="true" type="5" :dataSource="data1"></j-charts>
     </div>
   </div>
 </template>

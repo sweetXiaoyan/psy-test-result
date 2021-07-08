@@ -3,6 +3,7 @@ import { BarSeriesOption } from "echarts/types/dist/shared";
 export const barDefaultSeries = (color = "#066EFF", opacity = 1) => {
   const defaultSeries: BarSeriesOption = {
     barWidth: 12, //柱子宽度
+    barGap: "90%",
     itemStyle: {
       borderRadius: [12, 12, 0, 0], //柱子圆角
       color: color

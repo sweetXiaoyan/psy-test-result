@@ -6,7 +6,6 @@
 export function throttle(fn: Function, delay = 500) {
   let timer;
   let context = function(...args) {
-
     if (timer) return;
     timer = setTimeout(() => {
       fn.apply(context, args);
@@ -34,6 +33,18 @@ export function debounce(fn: Function, delay = 500) {
   };
 
   return context;
+}
+
+export function computedPercent(data) {
+  const sum = data.reduce((cur, next) => {
+    cur += next.value;
+    return cur;
+  }, 0);
+
+  data.map(el => {
+    el.percent = ((el.value / sum) * 100).toFixed(1);
+  });
+  return data;
 }
 
 // export function observerEvent(obj, type:string, callback:Function) {
