@@ -22,7 +22,7 @@
 <script lang="ts">
 import { defineComponent, ref, Ref } from "vue";
 // import JsonChart from "../lib/JsonChart";
-import { ChartProps, PieProps, ChartTypes, TestProp } from "../lib/types";
+// import { ChartProps, PieProps, ChartTypes, TestProp } from "../lib/types";
 import BasePie from "./example/Pie/BasePie.vue";
 import BaseLine from "./example/Line/BaseLine.vue";
 import BaseBar from "./example/Bar/index.vue";
@@ -147,22 +147,22 @@ export default defineComponent({
       testName: "你的依恋类型是什么",
       userName: "张小艳"
     });
-    const config: Ref<ChartProps> = ref({
-      type: 3,
-      title: {
-        visible: true,
-        text: "单折线图"
-      },
-      description: {
-        visible: true,
-        text: "一个简单的单折线图"
-      },
-      width: 300,
-      height: 220,
-      xField: "x",
-      yField: "y"
-      // color: "#5bf96f",
-    });
+    // const config: Ref<ChartProps> = ref({
+    //   type: 3,
+    //   title: {
+    //     visible: true,
+    //     text: "单折线图"
+    //   },
+    //   description: {
+    //     visible: true,
+    //     text: "一个简单的单折线图"
+    //   },
+    //   width: 300,
+    //   height: 220,
+    //   xField: "x",
+    //   yField: "y"
+    //   // color: "#5bf96f",
+    // });
     const PieConfig = ref({
       type: 5,
       title: {
@@ -311,7 +311,7 @@ export default defineComponent({
     ]);
 
     return {
-      config,
+    //   config,
       data,
       PieConfig,
       ScatterConfig,

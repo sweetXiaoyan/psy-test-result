@@ -8,16 +8,22 @@
       <h3>双折线图</h3>
       <json-line :dataSource="data"></json-line>
     </div>
+    <div>
+      <h3>使用Ycharts实现</h3>
+      <j-charts type="3" :dataSource="data"></j-charts>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import JsonLine from "../../packages/Line";
+import JCharts from '../../packages/main/index'
 import { defineComponent } from "vue";
 
 export default defineComponent({
   components: {
-    JsonLine
+    JsonLine,
+    JCharts
   },
   setup(props) {
     const singleData = [

@@ -8,16 +8,21 @@
       <h3>多系列雷达图</h3>
       <json-radar :dataSource="data"></json-radar>
     </div>
+    <div>
+      <h3>使用Jchart实现</h3>
+      <j-charts type="6" :dataSource="data"></j-charts>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import JsonRadar from "../../packages/Radar";
-
+import JCharts from '../../packages/main/index'
 export default defineComponent({
   components: {
-    JsonRadar
+    JsonRadar,
+    JCharts
   },
   setup(props) {
     const singleData = [

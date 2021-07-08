@@ -1,16 +1,20 @@
 <template>
     <div>
         <div>
-            <h3>基础折线图</h3>
+            <h3>基础柱状图</h3>
             <json-bar :dataSource="singleData"></json-bar>
         </div>
         <div>
-            <h3>双折线图</h3>
+            <h3>双柱状图</h3>
             <json-bar :dataSource="data"></json-bar>
         </div>
         <div>
             <h3>显示百分百</h3>
             <json-bar :dataSource="data1"></json-bar>
+        </div>
+          <div>
+            <h3>使用Ycharts实现</h3>
+            <j-charts type="5" :dataSource="data1"></j-charts>
         </div>
     </div>
 </template>
@@ -18,10 +22,12 @@
 <script lang="ts">
 import JsonBar from "../../packages/Bar";
 import { defineComponent } from "vue";
+import JCharts from '../../packages/main/index'
 
 export default defineComponent({
     components: {
         JsonBar,
+        JCharts
     },
     setup(props) {
         const singleData = [
