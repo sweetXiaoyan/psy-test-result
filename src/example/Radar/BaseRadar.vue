@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div style="width:80%; margin:0 auto">
       <h3>基础雷达图</h3>
       <json-radar :dataSource="singleData"></json-radar>
     </div>
@@ -18,7 +18,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import JsonRadar from "../../packages/Radar";
-import JCharts from '../../packages/main/index'
+import JCharts from "../../packages/main/index";
 export default defineComponent({
   components: {
     JsonRadar,

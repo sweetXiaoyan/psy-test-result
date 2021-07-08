@@ -25,9 +25,10 @@ echarts.use([
 
 // 默认样式
 const defaultStyle: CSSProperties = {
-  width: "100%",
-  height: "100%",
-  minHeight: "300px"
+  width: "96%",
+  height: "96%",
+  margin: "auto",
+  minHeight: "260px"
 };
 
 const CHART_INSTANCES = new WeakMap<
