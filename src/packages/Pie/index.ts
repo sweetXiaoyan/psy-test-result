@@ -1,4 +1,4 @@
-import { defineComponent, h, PropType, App } from "vue";
+import { defineComponent, h, PropType, App, Ref } from "vue";
 import commonProps from "../../utils/commonProps";
 import JsonChart from "../chart";
 import * as echarts from "echarts/core";
@@ -36,9 +36,15 @@ const JsonPie = defineComponent({
     const { dataSource, settings, ...rest } = this.$props;
 
     return h(JsonChart, {
+      ref: "JsonChartRef",
       ...rest,
       options: this.Options
     });
+  },
+  methods: {
+    resize() {
+      (this.$refs["JsonChartRef"] as Ref & { resize }).resize();
+    }
   },
   mounted() {
     const { dataSource, settings, ariaShow } = this.$props;

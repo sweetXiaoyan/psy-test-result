@@ -40,9 +40,15 @@ const JsonRadar = defineComponent({
       Options: options
     };
   },
+  methods: {
+    resize() {
+      (this.$refs["JsonChartRef"] as Ref & { resize }).resize();
+    }
+  },
   render() {
     const { dataSource, settings, ...rest } = this.$props;
     return h(JsonChar, {
+      ref: "JsonChartRef",
       ...rest,
       options: this.Options
     });

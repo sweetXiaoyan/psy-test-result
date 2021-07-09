@@ -38,7 +38,7 @@ const props = {
    */
   resizeAble: {
     type: Boolean,
-    default: () => true
+    default: () => false
   },
   /**
    * event事件

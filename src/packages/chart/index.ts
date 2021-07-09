@@ -36,6 +36,7 @@ const CHART_INSTANCES = new WeakMap<
   echarts.ECharts | null
 >();
 const JsonChart = defineComponent({
+  name: "JsonChart",
   props: {
     ...commonProps,
     options: {
@@ -43,7 +44,6 @@ const JsonChart = defineComponent({
       required: true
     }
   },
-
   methods: {
     initChart(el: HTMLDivElement): Promise<echarts.ECharts> {
       const renderer = this.renderer;
@@ -86,6 +86,7 @@ const JsonChart = defineComponent({
     // 调用resize
     resize() {
       CHART_INSTANCES.get(this)?.resize();
+      console.log("执行了resize");
     },
     getInstance() {
       return CHART_INSTANCES.get(this)!;

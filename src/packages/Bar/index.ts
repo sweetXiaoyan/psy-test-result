@@ -1,4 +1,4 @@
-import { App, defineComponent, h, PropType } from "vue";
+import { App, defineComponent, h, PropType, Ref } from "vue";
 import commonProps from "../../utils/commonProps";
 import JsonChart from "../chart";
 import handleBarLine, {
@@ -46,6 +46,7 @@ const JsonBar = defineComponent({
       dataSource = computedPercent(dataSource);
     }
     return h(JsonChart, {
+      ref: "JsonChartRef",
       ...rest,
       options: this.Options
     });
@@ -58,6 +59,11 @@ const JsonBar = defineComponent({
       : (settings.type = BarLineType.BAR);
 
     this.Options = handleBarLine(dataSource, settings, ariaShow);
+  },
+  methods: {
+    resize() {
+      (this.$refs["JsonChartRef"] as Ref & { resize }).resize();
+    }
   },
   watch: {
     $props() {
