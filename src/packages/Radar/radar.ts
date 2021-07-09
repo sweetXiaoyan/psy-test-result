@@ -3,6 +3,7 @@ import {
   RadarSeriesOption,
   TitleOption,
   TooltipOption,
+  RadarOption,
   LegendComponentOption
 } from "echarts/types/dist/shared";
 import { Columns, ObjectKey } from "../../utils/type";
@@ -13,6 +14,7 @@ import {
   defaultColors
 } from "../../utils/defaultConfig";
 
+let index = -1;
 type RadarData = {
   series?: string;
 };
@@ -25,6 +27,7 @@ export interface RadarSettings {
   title?: TitleOption;
   tooltip?: TooltipOption | boolean;
   legend?: LegendComponentOption | boolean;
+  custom?: boolean;
 }
 
 const radarTooltip = (
@@ -65,6 +68,42 @@ const radarIndicator = (
     indicatorArr.push({ text: item.label });
   });
   return indicatorArr;
+};
+
+const radarNameCustom = (
+  dataSource: RadarDataSource[],
+  settings: RadarSettings
+) => {
+  const defaultName = {
+    color: "black",
+    borderRadius: 3,
+    padding: [3, 5]
+  };
+  const { custom = true } = settings;
+  let customObj: ObjectKey = {
+    rich: {
+      a: {
+        color: "#666666",
+        lineHeight: 20
+      },
+      b: {
+        color: "#BD8E61",
+        fontWeight: "bold",
+        align: "center",
+        padding: 2,
+        borderRadius: 4
+      }
+    },
+    formatter: (a, b) => {
+      console.log("a:", a, "b:", b, dataSource);
+      ++index;
+      return `{a|${a}}\n{b|${dataSource[index].value}}`;
+    }
+  };
+  if (dataSource[0].series) {
+    return defaultName;
+  }
+  return custom ? customObj : defaultName;
 };
 const radarSeries = (
   dataSource: RadarDataSource[],
@@ -128,7 +167,6 @@ const radarSeries = (
       data: [dataSource.map((item: RadarDataSource) => item.value)]
     };
   }
-  console.log("----series", series);
   return series;
 };
 
@@ -141,6 +179,7 @@ const handleRadar = (
   const tooltip = radarTooltip(dataSource, settings);
   const legend = radarLegend(dataSource, settings) as LegendComponentOption;
   const indicator = radarIndicator(dataSource, settings);
+  const name = radarNameCustom(dataSource, settings);
   const series = radarSeries(dataSource, settings);
   const options: EChartsOption = {
     title: title,
@@ -149,6 +188,7 @@ const handleRadar = (
     radar: {
       shape: "circle",
       indicator: indicator,
+      axisName: name,
       radius: 80,
       axisLine: {
         lineStyle: {
@@ -161,19 +201,10 @@ const handleRadar = (
           width: 2,
           color: ["#EAE9FD"]
         }
-      },
-      axisName: {
-        color: "black",
-        borderRadius: 3,
-        padding: [3, 5]
-        // textStyle: {
-        //
-        // },
       }
     },
     series: series
   };
-  console.log("options---", options);
   return options;
 };
 export default handleRadar;
