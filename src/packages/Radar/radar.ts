@@ -14,9 +14,9 @@ import {
   defaultColors
 } from "../../utils/defaultConfig";
 
-let index = -1;
 type RadarData = {
   series?: string;
+  percent?: number | string;
 };
 
 export type RadarDataSource = Columns & RadarData;
@@ -79,6 +79,7 @@ const radarNameCustom = (
     borderRadius: 3,
     padding: [3, 5]
   };
+  let index = -1;
   const { custom = true } = settings;
   let customObj: ObjectKey = {
     rich: {
@@ -95,8 +96,10 @@ const radarNameCustom = (
       }
     },
     formatter: (a, b) => {
-      console.log("a:", a, "b:", b, dataSource);
       ++index;
+      if (dataSource[index].percent) {
+        return `{a|${a}}\n{b|${dataSource[index].percent}%}`;
+      }
       return `{a|${a}}\n{b|${dataSource[index].value}}`;
     }
   };
