@@ -1,4 +1,4 @@
-import { CSSProperties, PropType } from "vue";
+import { CSSProperties, PropType } from "vue-demi";
 import { ObjectKey } from "./type";
 
 const props = {

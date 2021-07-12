@@ -1,4 +1,4 @@
-import { defineComponent, h, PropType, App, Ref } from "vue";
+import { defineComponent, h, PropType, App, Ref, Vue2 } from "vue-demi";
 import commonProps from "../../utils/commonProps";
 import JsonChart from "../chart";
 import * as echarts from "echarts/core";
@@ -6,7 +6,10 @@ import { EChartsOption } from "echarts/types/dist/shared";
 import { PieChart } from "echarts/charts";
 
 import handlePie, { PieDataSource, PieSettings } from "./pie";
-
+const TAG_NAME = "json-echarts";
+if (Vue2) {
+  Vue2.config.ignoredElements.push(TAG_NAME);
+}
 echarts.use([PieChart]);
 
 interface JsonPieData {

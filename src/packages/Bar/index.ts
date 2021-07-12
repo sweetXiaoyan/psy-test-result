@@ -1,4 +1,4 @@
-import { App, defineComponent, h, PropType, Ref } from "vue";
+import { App, defineComponent, h, PropType, Ref } from "vue-demi";
 import commonProps from "../../utils/commonProps";
 import JsonChart from "../chart";
 import handleBarLine, {

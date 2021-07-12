@@ -1,4 +1,4 @@
-import { defineComponent, h, CSSProperties, PropType, App } from "vue";
+import { defineComponent, h, CSSProperties, PropType, App } from "vue-demi";
 import commonProps from "../../utils/commonProps";
 import { bind, clear } from "size-sensor";
 

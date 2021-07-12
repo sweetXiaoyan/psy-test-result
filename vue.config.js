@@ -7,7 +7,7 @@ module.exports = {
   productionSourceMap: false,
   configureWebpack: config => {
     if (config.mode === "production") {
-      config.externals = ["vue", /^echarts\/.+$/];
+      config.externals = ["vue-demi", /^echarts\/.+$/];
     }
   }
 };

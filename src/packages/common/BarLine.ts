@@ -1,10 +1,5 @@
-import { App, defineComponent, h, PropType } from "vue";
-import commonProps from "../../utils/commonProps";
 import { barDefaultSeries, barDefaultGrid } from "../Bar/barDefaultConfig";
-// import Chart from "../chart";
 
-// import * as echarts from "echarts/core";
-// import { BarChart, LineChart } from "echarts/charts";
 import {
   EChartsOption,
   LineSeriesOption,

@@ -7,7 +7,7 @@ import {
   Ref,
   toRefs,
   watch
-} from "vue";
+} from "vue-demi";
 import "echarts/lib/chart/radar";
 import commonProps from "../../utils/commonProps";
 import JsonChar from "../chart";
